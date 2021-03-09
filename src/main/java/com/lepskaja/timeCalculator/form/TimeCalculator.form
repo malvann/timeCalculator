@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.lepskaja.timeCalculator.form.TimeCalculator">
+  <grid id="27dc6" binding="startPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="true" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="410" height="261"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <tabbedpane id="8ae10" binding="projectsViewPane">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <minimum-size width="400" height="250"/>
+            <preferred-size width="400" height="250"/>
+            <maximum-size width="400" height="250"/>
+          </grid>
+        </constraints>
+        <properties>
+          <enabled value="true"/>
+          <tabLayoutPolicy value="0"/>
+          <toolTipText value="Timer"/>
+        </properties>
+        <clientProperties>
+          <html.disable class="java.lang.Boolean" value="false"/>
+        </clientProperties>
+        <border type="none">
+          <font/>
+          <title-color color="-16777216"/>
+        </border>
+        <children>
+          <grid id="940b7" binding="calculatorPanel" layout-manager="GridLayoutManager" row-count="6" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <tabbedpane title="Calculator"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="6575c" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="30" height="30"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <horizontalTextPosition value="4"/>
+                  <text value="Start time"/>
+                </properties>
+              </component>
+              <component id="148f" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="30" height="30"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <horizontalTextPosition value="4"/>
+                  <text value="End time"/>
+                </properties>
+              </component>
+              <component id="55eed" class="javax.swing.JTextField" binding="calcStartHourField">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="70" height="30"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <columns value="2"/>
+                  <enabled value="true"/>
+                  <focusAccelerator value="0"/>
+                  <horizontalAlignment value="0"/>
+                  <nextFocusableComponent value=""/>
+                  <text value=""/>
+                  <toolTipText value="00-23"/>
+                </properties>
+              </component>
+              <component id="26911" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="10" height="30"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <horizontalAlignment value="0"/>
+                  <text value=":"/>
+                </properties>
+              </component>
+              <component id="d14db" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="10" height="30"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <horizontalAlignment value="0"/>
+                  <text value=":"/>
+                </properties>
+              </component>
+              <component id="cc8c8" class="javax.swing.JTextField" binding="calcEndHourField">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="70" height="30"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <columns value="2"/>
+                  <horizontalAlignment value="0"/>
+                  <nextFocusableComponent value="b8c4"/>
+                  <text value=""/>
+                  <toolTipText value="00-23"/>
+                </properties>
+              </component>
+              <component id="6108c" class="javax.swing.JTextField" binding="calcEndMinField">
+                <constraints>
+                  <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="70" height="30"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <columns value="2"/>
+                  <horizontalAlignment value="0"/>
+                  <nextFocusableComponent value="438a1"/>
+                  <text value=""/>
+                  <toolTipText value="00-59"/>
+                </properties>
+              </component>
+              <component id="c104c" class="javax.swing.JTextField" binding="calcStartMinField">
+                <constraints>
+                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="70" height="30"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <columns value="2"/>
+                  <horizontalAlignment value="0"/>
+                  <nextFocusableComponent value="db7d6"/>
+                  <text value=""/>
+                  <toolTipText value="00-59"/>
+                </properties>
+              </component>
+              <component id="a0768" class="javax.swing.JRadioButton" binding="calcRadioButtonResInMinutes">
+                <constraints>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <nextFocusableComponent value=""/>
+                  <selected value="true"/>
+                  <text value="get time in minutes"/>
+                </properties>
+              </component>
+              <component id="6662a" class="javax.swing.JButton" binding="calcButtonGetTime">
+                <constraints>
+                  <grid row="3" column="0" row-span="2" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="120" height="60"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <horizontalTextPosition value="0"/>
+                  <nextFocusableComponent value="cbf80"/>
+                  <requestFocusEnabled value="true"/>
+                  <text value="GET TIME"/>
+                </properties>
+              </component>
+              <component id="6c238" class="javax.swing.JRadioButton" binding="calcRadioButtonResInHours">
+                <constraints>
+                  <grid row="2" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <nextFocusableComponent value=""/>
+                  <text value="get time in hours"/>
+                </properties>
+              </component>
+              <component id="6c865" class="javax.swing.JButton" binding="calcButtonAddToMemory">
+                <constraints>
+                  <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="40" height="30"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <horizontalTextPosition value="0"/>
+                  <nextFocusableComponent value="aebda"/>
+                  <text value="add to M"/>
+                </properties>
+              </component>
+              <component id="76848" class="javax.swing.JButton" binding="calcButtonClearMemory">
+                <constraints>
+                  <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="40" height="30"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <horizontalTextPosition value="0"/>
+                  <nextFocusableComponent value="69d65"/>
+                  <text value="clear M"/>
+                </properties>
+              </component>
+              <component id="fa60d" class="javax.swing.JButton" binding="calcButtonShowMemory">
+                <constraints>
+                  <grid row="4" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="80" height="30"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <horizontalTextPosition value="0"/>
+                  <nextFocusableComponent value="13469"/>
+                  <text value="show M"/>
+                </properties>
+              </component>
+              <component id="f11f3" class="javax.swing.JLabel" binding="calcResultField">
+                <constraints>
+                  <grid row="5" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="120" height="50"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <font size="14" style="1"/>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <text value="Use 24h format."/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="2ebc1" binding="timerPanel" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <tabbedpane title="Timer"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="a6bf" class="javax.swing.JRadioButton" binding="timerRadioButtonResInMinutes">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <nextFocusableComponent value=""/>
+                  <selected value="true"/>
+                  <text value="get time in minutes"/>
+                </properties>
+              </component>
+              <component id="2aa00" class="javax.swing.JRadioButton" binding="timerRadioButtonResInHours">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <nextFocusableComponent value=""/>
+                  <text value="get time in hours"/>
+                </properties>
+              </component>
+              <component id="ce53" class="javax.swing.JLabel" binding="timerResultField">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="120" height="50"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <font size="14" style="1"/>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <text value="Use 24h format."/>
+                </properties>
+              </component>
+              <component id="3d1da" class="javax.swing.JButton" binding="timerStartButton">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="4" fill="2" indent="0" use-parent-layout="false">
+                    <minimum-size width="130" height="100"/>
+                    <preferred-size width="130" height="100"/>
+                    <maximum-size width="130" height="100"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <text value="Start"/>
+                </properties>
+              </component>
+              <component id="477e" class="javax.swing.JButton" binding="timerStopButton">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="2" indent="0" use-parent-layout="false">
+                    <minimum-size width="130" height="100"/>
+                    <preferred-size width="130" height="100"/>
+                    <maximum-size width="130" height="100"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <text value="Stop"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="399a7" binding="projTimingPanel" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <tabbedpane title="Project Timing"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="ba1e" class="javax.swing.JLabel" binding="projResultField">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="120" height="50"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <font size="14" style="1"/>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <text value="0 min"/>
+                </properties>
+              </component>
+              <component id="4b682" class="javax.swing.JButton" binding="projStartButton">
+                <constraints>
+                  <grid row="1" column="0" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="4" fill="2" indent="0" use-parent-layout="false">
+                    <minimum-size width="100" height="100"/>
+                    <preferred-size width="100" height="100"/>
+                    <maximum-size width="100" height="100"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <text value="Start"/>
+                </properties>
+              </component>
+              <component id="20077" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Project name:"/>
+                </properties>
+              </component>
+              <component id="1a4cb" class="javax.swing.JRadioButton" binding="projRadioButtonResInMinutes">
+                <constraints>
+                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <nextFocusableComponent value=""/>
+                  <selected value="true"/>
+                  <text value="get time in minutes"/>
+                </properties>
+              </component>
+              <component id="d158c" class="javax.swing.JButton" binding="projStopButton">
+                <constraints>
+                  <grid row="1" column="1" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                    <minimum-size width="100" height="100"/>
+                    <preferred-size width="100" height="100"/>
+                    <maximum-size width="100" height="100"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <text value="Stop"/>
+                </properties>
+              </component>
+              <component id="408f4" class="javax.swing.JRadioButton" binding="projRadioButtonResInHours">
+                <constraints>
+                  <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <nextFocusableComponent value=""/>
+                  <text value="get time in hours"/>
+                </properties>
+              </component>
+              <component id="663bd" class="javax.swing.JComboBox" binding="projNameComboBox">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <editable value="true"/>
+                  <model/>
+                  <toolTipText value=""/>
+                </properties>
+              </component>
+              <component id="43cfd" class="javax.swing.JButton" binding="projCreateButton">
+                <constraints>
+                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="2" indent="0" use-parent-layout="false">
+                    <minimum-size width="130" height="50"/>
+                    <preferred-size width="130" height="50"/>
+                    <maximum-size width="130" height="50"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <text value="create new"/>
+                </properties>
+              </component>
+              <component id="13ea5" class="javax.swing.JButton" binding="projectsAddFileButton">
+                <constraints>
+                  <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="130" height="50"/>
+                    <preferred-size width="130" height="50"/>
+                    <maximum-size width="130" height="50"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <text value="add projects file"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="a4b48" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <tabbedpane title="Projects"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
+        </children>
+      </tabbedpane>
+    </children>
+  </grid>
+</form>
