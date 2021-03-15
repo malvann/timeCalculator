@@ -1,15 +1,22 @@
 package com.lepskaja.timeCalculator.form;
 
+import com.lepskaja.timeCalculator.exception.ProjFileException;
+import com.lepskaja.timeCalculator.manager.FileManager;
+import com.lepskaja.timeCalculator.manager.ProjManager;
 import com.lepskaja.timeCalculator.tab.CalcTab;
 import com.lepskaja.timeCalculator.tab.ProjTimingTab;
+import com.lepskaja.timeCalculator.tab.ProjectsTab;
 import com.lepskaja.timeCalculator.tab.TimerTab;
 
 import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.IOException;
 
 public class TimeCalculator {
     private JPanel startPanel;
+    private JTabbedPane projectsViewPane;
 
-    private JPanel calculatorPanel;
     private JTextField calcStartHourField;
     private JTextField calcEndHourField;
     private JTextField calcEndMinField;
@@ -22,32 +29,47 @@ public class TimeCalculator {
     private JButton calcButtonShowMemory;
     private JLabel calcResultField;
 
-    private JPanel timerPanel;
     private JRadioButton timerRadioButtonResInMinutes;
     private JRadioButton timerRadioButtonResInHours;
     private JLabel timerResultField;
     private JButton timerStartButton;
     private JButton timerStopButton;
 
-    private JPanel projTimingPanel;
     private JLabel projResultField;
     private JButton projStartButton;
     private JRadioButton projRadioButtonResInMinutes;
     private JButton projStopButton;
-    private JButton projCreateButton;
+    private JButton projAddButton;
     private JRadioButton projRadioButtonResInHours;
-    private JComboBox projNameComboBox;
-    private JButton projectsAddFileButton;
+    private JComboBox<String> projNameComboBox;
+    private JTextField textFieldNewProjName;
 
-    private JTabbedPane projectsViewPane;
+    private JList<String> projList;
+    private JButton projButtonEdit;
+    private JButton projDeleteButton;
+    private JButton projDeleteAllButton;
+    private JTextField projTextFieldEditName;
+    private JButton projSaveEditButton;
+    private JTextField projTextFieldEditMin;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("TimeCalculator");
         frame.setContentPane(new TimeCalculator().startPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.pack();
         frame.setVisible(true);
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                try {
+                    FileManager.wright(ProjManager.getProjectMap());
+                } catch (ProjFileException | IOException ex) {
+                    ex.printStackTrace();
+                }
+                //projStopButton
+                System.exit(0);
+            }
+        });
     }
 
     public TimeCalculator() {
@@ -71,24 +93,34 @@ public class TimeCalculator {
                 });
         new TimerTab(
                 new JComponent[]{
-                        timerRadioButtonResInMinutes,
                         timerRadioButtonResInHours,
+                        timerRadioButtonResInMinutes,
                         timerResultField,
                         timerStartButton,
                         timerStopButton
                 });
         new ProjTimingTab(
                 new JComponent[]{
-                        projRadioButtonResInMinutes,
                         projRadioButtonResInHours,
+                        projRadioButtonResInMinutes,
                         projResultField,
                         projStartButton,
                         projStopButton,
                         projNameComboBox,
-                        projCreateButton,
-                        projectsAddFileButton,
+                        projAddButton,
+                        textFieldNewProjName,
                         projectsViewPane
                 });
-        new JTabbedPane();
+        new ProjectsTab(
+                new JComponent[]{
+                    projList,
+                    projButtonEdit,
+                    projDeleteButton,
+                    projDeleteAllButton,
+                    projTextFieldEditName,
+                    projSaveEditButton,
+                    projTextFieldEditMin,
+                    projectsViewPane
+                });
     }
 }

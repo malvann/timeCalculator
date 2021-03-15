@@ -6,6 +6,7 @@ import com.lepskaja.timeCalculator.validator.TimeValidator;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Arrays;
 
 public class CalcTab extends AbstractTab{
     private JTextField calcStartHourField;
@@ -21,10 +22,11 @@ public class CalcTab extends AbstractTab{
     private static final String EXCEPTION_MESSAGE = "U should put in digits..";
     private static final String START_VAL = "";
 
-    private static int memory = 0;
+    private int memory = 0;//in minutes only
 
     public CalcTab(JComponent[] components) {
-        createUIComponents(components);
+        super(Arrays.copyOfRange(components, 7, 9));
+        createCalcTabUIComponents(components);
 
         calcStartHourField.requestFocusInWindow();
         calcStartHourField.addCaretListener(e -> refreshFocus(calcStartHourField, calcStartMinField));
@@ -59,41 +61,27 @@ public class CalcTab extends AbstractTab{
             }
 
             int[] period = ActionNotInReal.getTimePeriod(startHour, startMin, endHour, endMin);
+            result = TimeConverter.convertToMinutes(period[0], period[1]);
 
-            result = switch (type){
-                case MIN ->  TimeConverter.convertToMinutes(period[0], period[1]);
-                case HOUR -> TimeConverter.convertToHours(period[0], period[1]);
-            };
-            setResultFieldFormattedText(result);
+            refreshResultField(result);
             setStartValues();
-        });
-
-        radioButtonResInMinutes.addActionListener(e -> {
-            setFuncRadioButtonResInMinutes();
-            refreshMemory();
-        });
-
-        radioButtonResInHours.addActionListener(e -> {
-            setFuncRadioButtonResInHours();
-            refreshMemory();
         });
 
         calcButtonAddToMemory.addActionListener(e -> {
             memory += result;
-            result = 0;
             calcButtonAddToMemory.setBackground(Color.pink);
-            calcButtonShowMemory.setToolTipText(memory+" "+type.toString().toLowerCase());
-            resultField.setText(START_VAL);
+
+            refreshResultField(result);
             setStartValues();
         });
 
         calcButtonClearMemory.addActionListener(e -> {
             memory = 0;
+            result = 0;
             calcButtonAddToMemory.setBackground(calcButtonClearMemory.getBackground());
-            calcButtonShowMemory.setToolTipText(START_VAL);
         });
 
-        calcButtonShowMemory.addActionListener(e -> setResultFieldFormattedText(memory));
+        calcButtonShowMemory.addActionListener(e -> refreshResultField(memory));
     }
 
     private void setStartValues(){
@@ -107,13 +95,7 @@ public class CalcTab extends AbstractTab{
         if (from.getText().length()==2) to.requestFocusInWindow();
     }
 
-    private void refreshMemory() {
-        if (TimeValidator.isDigit(result+"")){
-            memory = TimeConverter.convertToMinutes(memory);
-        }
-    }
-
-    private void createUIComponents(JComponent[] components) {
+    private void createCalcTabUIComponents(JComponent[] components) {
         calcStartHourField = (JTextField) components[0];
         calcEndHourField = (JTextField) components[1];
         calcEndMinField = (JTextField) components[2];
@@ -121,8 +103,6 @@ public class CalcTab extends AbstractTab{
         calcButtonGetTime = (JButton) components[4];
         calcButtonShowMemory = (JButton) components[5];
         resultField = (JLabel) components[6];
-        radioButtonResInHours = (JRadioButton) components[7];
-        radioButtonResInMinutes = (JRadioButton) components[8];
         calcButtonAddToMemory = (JButton) components[9];
         calcButtonClearMemory = (JButton) components[10];
     }

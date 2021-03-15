@@ -14,7 +14,7 @@ public class TimeConverterTest {
 
     @Test
     public void convertToHours() {
-        int hours = TimeConverter.convertToHours(1, 25);
+        int hours = (int) TimeConverter.convertToHours(1, 25);
         assertEquals(1+25/60, hours);
     }
 }

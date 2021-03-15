@@ -1,70 +1,74 @@
 package com.lepskaja.timeCalculator.tab;
 
-import com.lepskaja.timeCalculator.converter.ProjectDataConverter;
-import com.lepskaja.timeCalculator.manager.FileManager;
-import com.lepskaja.timeCalculator.validator.ProjectDataValidator;
+import com.lepskaja.timeCalculator.exception.ProjFileException;
+import com.lepskaja.timeCalculator.manager.ProjManager;
 
 import javax.swing.*;
-import java.awt.*;
-import java.util.*;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.io.IOException;
+import java.util.concurrent.ConcurrentMap;
 
 public class ProjTimingTab extends TimerTab{
-    private JComboBox projNameComboBox;
-    private JButton projCreateButton;
-    private JButton projectsAddFileButton;
+    private static final String ERR_MSG_PROJ_IS_PRESENT = "Such project name is presented.";
+    private static final String ERR_MSG_PROJ_FILE_LOST = " Projects file had lust.";
 
     private JTabbedPane projectsViewPane;
+    private JComboBox<String> projNameComboBox;
+    private JButton projAddButton;
+    private JTextField textFieldNewProjName;
 
-    private static Map<String, Integer> projectMap = new HashMap<>();
+    private ConcurrentMap<String, Integer> projectMap;
     private String currentProjectName;
+    DefaultComboBoxModel<String> model;
 
     public ProjTimingTab(JComponent[] components) {
         super(components);
-        createUIComponents(components);
-        projectsAddFileButton.setBackground(Color.pink);
+        createProjTimingUIComponents(components);
+        model = new DefaultComboBoxModel<>();
+        projNameComboBox.setModel(model);
+        timerStartButton.setEnabled(false);
+
+        try {
+            projectMap = ProjManager.getProjectMap();
+        } catch (ProjFileException | IOException e){
+            resultField.setText(e.getMessage() + ERR_MSG_PROJ_FILE_LOST);
+        }
+
+        projectsViewPane.addChangeListener(e -> refreshNameComboBox());
 
         projNameComboBox.addActionListener(e -> {
-
+            currentProjectName = (String) projNameComboBox.getSelectedItem();
+            resultField.setText("0");
+            timerStartButton.setEnabled(true);
         });
 
-        projCreateButton.addActionListener(e -> {
-            projectsViewPane.requestFocusInWindow();
-            refreshNameComboBox();//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!set to ProjPane!!!!!!!!!!!!!!!!!!!!!!!!!!
-        });
-
-        projectsAddFileButton.addActionListener(e -> {
-            fillProjectMap();
-            refreshNameComboBox();
-            projectsAddFileButton.setBackground(projCreateButton.getBackground());
-
-            //set to stop button
-            List<String> projects = projectMap.entrySet().stream()
-                    .map(ProjectDataConverter::convertToString).collect(Collectors.toList());
-            FileManager.wright(projects);
-        });
-    }
-
-    private void refreshNameComboBox() {
-        projNameComboBox.setModel(new DefaultComboBoxModel(projectMap.keySet().toArray()));
-    }
-
-    private void fillProjectMap() {
-        String[] data = FileManager.read();
-        assert data != null;
-        Arrays.stream(data).forEach(s -> {
-            if (ProjectDataValidator.isValid(s)){
-                projectMap.entrySet().add(ProjectDataConverter.convertToEntry(s));
+        projAddButton.addActionListener(e -> {
+            String newProjName = textFieldNewProjName.getText();
+            if (newProjName == null) return;
+            if (projectMap.containsKey(newProjName)) resultField.setText(ERR_MSG_PROJ_IS_PRESENT);
+            else {
+                projectMap.putIfAbsent(newProjName,0);
+                refreshNameComboBox();
+                textFieldNewProjName.setText("");
             }
         });
     }
 
-    private void createUIComponents(JComponent[] components) {
-        projNameComboBox = (JComboBox) components[5];
-        projCreateButton = (JButton) components[6];
-        projectsAddFileButton = (JButton) components[7];
+    @Override
+    protected void timerStopButtonExtraLogic() {
+        projectMap.compute(currentProjectName, (s, integer) -> integer += result);
+        timerStartButton.setEnabled(false);
+        currentProjectName = "";
+    }
 
+    private void refreshNameComboBox() {
+        model.removeAllElements();
+        model.addAll(projectMap.keySet());
+    }
+
+    private void createProjTimingUIComponents(JComponent[] components) {
+        projNameComboBox = (JComboBox<String>) components[5];
+        projAddButton = (JButton) components[6];
+        textFieldNewProjName = (JTextField) components[7];
         projectsViewPane = (JTabbedPane) components[8];
     }
 }
