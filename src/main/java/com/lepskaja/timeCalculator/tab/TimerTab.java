@@ -2,6 +2,7 @@ package com.lepskaja.timeCalculator.tab;
 
 import com.lepskaja.timeCalculator.action.ActionInRealTime;
 import lombok.SneakyThrows;
+import org.apache.log4j.Logger;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +10,7 @@ import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 public class TimerTab extends AbstractTab{
+    private static final Logger LOGGER = Logger.getLogger(TimerTab.class);
     private static final int START_VAL = 0;
     private static final String TIMER_TEXT_FORMAT = "%d h  %d min  %d sec";
 
@@ -24,6 +26,7 @@ public class TimerTab extends AbstractTab{
         refreshResultField(START_VAL);
 
         timerStartButton.addActionListener(e -> {
+            timerStartButtonExtraLogic();
             showTimeThread = new ShowTimeThread();
             showTimeThread.setDaemon(true);
             showTimeThread.start();
@@ -37,8 +40,13 @@ public class TimerTab extends AbstractTab{
             timerStartButton.setBackground(timerStopButton.getBackground());
             refreshResultField(result);
             timerStopButtonExtraLogic();
+            LOGGER.info("TIME: " + result + " min");
         });
+        LOGGER.info(TimerTab.class.getName() + " created");
     }
+
+    //add logic to timerStartButton in ProjTimingTab.java
+    protected void timerStartButtonExtraLogic() {}
 
     //add logic to timerStopButton in ProjTimingTab.java
     protected void timerStopButtonExtraLogic(){}

@@ -3,12 +3,15 @@ package com.lepskaja.timeCalculator.tab;
 import com.lepskaja.timeCalculator.action.ActionNotInReal;
 import com.lepskaja.timeCalculator.converter.TimeConverter;
 import com.lepskaja.timeCalculator.validator.TimeValidator;
+import org.apache.log4j.Logger;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.Arrays;
 
 public class CalcTab extends AbstractTab{
+    private static final Logger LOGGER = Logger.getLogger(CalcTab.class);
+
     private JTextField calcStartHourField;
     private JTextField calcEndHourField;
     private JTextField calcEndMinField;
@@ -82,6 +85,7 @@ public class CalcTab extends AbstractTab{
         });
 
         calcButtonShowMemory.addActionListener(e -> refreshResultField(memory));
+        LOGGER.info(CalcTab.class.getName() + " created");
     }
 
     private void setStartValues(){

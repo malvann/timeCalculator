@@ -7,13 +7,17 @@ import com.lepskaja.timeCalculator.tab.CalcTab;
 import com.lepskaja.timeCalculator.tab.ProjTimingTab;
 import com.lepskaja.timeCalculator.tab.ProjectsTab;
 import com.lepskaja.timeCalculator.tab.TimerTab;
+import org.apache.log4j.Logger;
 
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
+import java.util.stream.Collectors;
 
 public class TimeCalculator {
+    private final static Logger LOGGER = Logger.getLogger(TimeCalculator.class);
+
     private JPanel startPanel;
     private JTabbedPane projectsViewPane;
 
@@ -53,22 +57,27 @@ public class TimeCalculator {
     private JTextField projTextFieldEditMin;
 
     public static void main(String[] args) {
+        LOGGER.info("START");
         JFrame frame = new JFrame("TimeCalculator");
         frame.setContentPane(new TimeCalculator().startPanel);
         frame.setLocationRelativeTo(null);
         frame.pack();
         frame.setVisible(true);
-        frame.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                try {
-                    FileManager.wright(ProjManager.getProjectMap());
-                } catch (ProjFileException | IOException ex) {
-                    ex.printStackTrace();
-                }
-                //projStopButton
-                System.exit(0);
+    frame.addWindowListener(
+        new WindowAdapter() {
+          @Override
+          public void windowClosing(WindowEvent e) {
+            try {
+              FileManager.wright(ProjManager.getProjectMap());
+              LOGGER.info("BEFORE CLOSE PROJ MAP:\n" +
+                      ProjManager.getProjectMap().entrySet().stream()
+                      .map(entry -> entry.getKey() + " " + entry.getValue()+"\n").collect(Collectors.joining()));
+            } catch (ProjFileException | IOException ex) {
+              ex.printStackTrace();
             }
+            LOGGER.info("EXIT");
+            System.exit(0);
+          }
         });
     }
 

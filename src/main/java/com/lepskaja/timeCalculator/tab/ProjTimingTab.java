@@ -2,12 +2,15 @@ package com.lepskaja.timeCalculator.tab;
 
 import com.lepskaja.timeCalculator.exception.ProjFileException;
 import com.lepskaja.timeCalculator.manager.ProjManager;
+import org.apache.log4j.Logger;
 
 import javax.swing.*;
 import java.io.IOException;
 import java.util.concurrent.ConcurrentMap;
+import java.util.stream.Collectors;
 
 public class ProjTimingTab extends TimerTab{
+    private static final Logger LOGGER = Logger.getLogger(ProjTimingTab.class);
     private static final String ERR_MSG_PROJ_IS_PRESENT = "Such project name is presented.";
     private static final String ERR_MSG_PROJ_FILE_LOST = " Projects file had lust.";
 
@@ -29,6 +32,10 @@ public class ProjTimingTab extends TimerTab{
 
         try {
             projectMap = ProjManager.getProjectMap();
+            LOGGER.info("PROJ MAP:\n" +
+                    ProjManager.getProjectMap().entrySet().stream()
+                            .map(entry -> entry.getKey() + " " + entry.getValue()+"\n")
+                            .collect(Collectors.joining()));
         } catch (ProjFileException | IOException e){
             resultField.setText(e.getMessage() + ERR_MSG_PROJ_FILE_LOST);
         }
@@ -37,26 +44,41 @@ public class ProjTimingTab extends TimerTab{
 
         projNameComboBox.addActionListener(e -> {
             currentProjectName = (String) projNameComboBox.getSelectedItem();
-            resultField.setText("0");
+            resultField.setText("0 min");
             timerStartButton.setEnabled(true);
         });
 
         projAddButton.addActionListener(e -> {
             String newProjName = textFieldNewProjName.getText();
-            if (newProjName == null) return;
+            if (newProjName == null || newProjName.isEmpty()) return;
             if (projectMap.containsKey(newProjName)) resultField.setText(ERR_MSG_PROJ_IS_PRESENT);
             else {
                 projectMap.putIfAbsent(newProjName,0);
                 refreshNameComboBox();
                 textFieldNewProjName.setText("");
+                try {
+                    LOGGER.info("PROJ MAP:\n" +
+                            ProjManager.getProjectMap().entrySet().stream()
+                                    .map(entry -> entry.getKey() + " " + entry.getValue()+"\n")
+                                    .collect(Collectors.joining()));
+                } catch (ProjFileException | IOException projFileException) {
+                    projFileException.printStackTrace();
+                }
             }
         });
+        LOGGER.info(ProjTimingTab.class.getName() + " created");
+    }
+
+    @Override
+    protected void timerStartButtonExtraLogic() {
+        projNameComboBox.setEnabled(false);
     }
 
     @Override
     protected void timerStopButtonExtraLogic() {
-        projectMap.compute(currentProjectName, (s, integer) -> integer += result);
+        projNameComboBox.setEnabled(true);
         timerStartButton.setEnabled(false);
+        projectMap.compute(currentProjectName, (s, integer) -> integer += result);
         currentProjectName = "";
     }
 

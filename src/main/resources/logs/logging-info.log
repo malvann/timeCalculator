@@ -1,0 +1,76 @@
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+PROJ MAP:
+q1 202
+q2 51
+q4 10
+
+com.lepskaja.timeCalculator.tab.ProjTimingTab created
+com.lepskaja.timeCalculator.tab.ProjectsTab created
+TIME: 0 min
+PROJ MAP:
+q1 202
+q2 51
+q3 0
+q4 10
+
+BEFORE CLOSE
+q1 202
+q2 51
+q4 10
+
+EXIT
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+PROJ MAP:
+q1 202
+q2 51
+q4 10
+
+com.lepskaja.timeCalculator.tab.ProjTimingTab created
+com.lepskaja.timeCalculator.tab.ProjectsTab created
+PROJ MAP:
+q1 202
+q2 51
+q3 0
+q4 10
+
+TIME: 1 min
+BEFORE CLOSE PROJ MAP:
+q1 202
+q2 51
+q3 1
+q4 10
+
+EXIT
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+PROJ MAP:
+q1 202
+q2 51
+q3 1
+q4 10
+
+com.lepskaja.timeCalculator.tab.ProjTimingTab created
+com.lepskaja.timeCalculator.tab.ProjectsTab created
+PROJ MAP:
+q1 202
+q2 51
+q3 1
+q4 10
+q5 0
+
+BEFORE CLOSE PROJ MAP:
+q1 202
+q2 51
+q3 1
+q4 10
+q5 0
+
+EXIT

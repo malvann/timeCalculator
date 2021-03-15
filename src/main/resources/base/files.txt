@@ -1,3 +1,5 @@
 q1                                       -  202 min
 q2                                       -   51 min
-q4                                       -    1 min
+q3                                       -    1 min
+q4                                       -   10 min
+q5                                       -    0 min
