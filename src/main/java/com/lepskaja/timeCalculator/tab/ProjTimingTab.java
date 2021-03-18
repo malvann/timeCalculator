@@ -21,16 +21,11 @@ public class ProjTimingTab extends TimerTab{
     private JTextField textFieldNewProjName;
 
     private ConcurrentMap<String, Integer> projectMap;
-    protected String currentProjectName;
-    DefaultComboBoxModel<String> model;
+    private String currentProjectName;
 
     public ProjTimingTab(JComponent[] components) {
         super(components);
         createProjTimingUIComponents(components);
-        timerStartButton.setEnabled(false);
-        timerStopButton.setEnabled(false);
-        model = new DefaultComboBoxModel<>();
-        projNameComboBox.setModel(model);
         try {
             projectMap = ProjManager.getProjectMap();
             LOGGER.info("PROJ MAP:\n" +
@@ -41,36 +36,32 @@ public class ProjTimingTab extends TimerTab{
             resultField.setText(e.getMessage() + ERR_MSG_PROJ_FILE_LOST);
         }
 
-
-    projectsViewPane.addChangeListener(
-        e -> {
+    projectsViewPane.addChangeListener(e -> {
           refreshNameComboBox();
           textFieldNewProjName.setText(null);
-//          System.out.println("in viewpane: "+currentProjectName);///////////////////////////////////////////////////
         });
 
-        projNameComboBox.addActionListener(e -> {
-            if (currentProjectName==null || currentProjectName.isEmpty()) return;
-            currentProjectName = (String) projNameComboBox.getSelectedItem();
-            resultField.setText("0 min");
-            timerStartButton.setEnabled(true);
+    projNameComboBox.addActionListener(e -> {
+          currentProjectName = (String) projNameComboBox.getSelectedItem();
+          resultField.setText("0 min");
+          timerStartButton.setEnabled(true);
         });
 
         projAddButton.addActionListener(e -> {
+            if (textFieldNewProjName.getText()==null || textFieldNewProjName.getText().isEmpty()) return;
             String newProjName = textFieldNewProjName.getText();
-            if (newProjName == null || newProjName.isEmpty()) return;
             if (projectMap.containsKey(newProjName)) resultField.setText(ERR_MSG_PROJ_IS_PRESENT);
             else {
-                projectMap.putIfAbsent(newProjName,0);
+                projectMap.put(newProjName,0);
                 refreshNameComboBox();
-                textFieldNewProjName.setText("");
+                textFieldNewProjName.setText(null);
                 try {
                     LOGGER.info("PROJ MAP:\n" +
                             ProjManager.getProjectMap().entrySet().stream()
                                     .map(entry -> entry.getKey() + " " + entry.getValue()+"\n")
                                     .collect(Collectors.joining()));
                 } catch (ProjFileException | IOException projFileException) {
-                    projFileException.printStackTrace();
+                    LOGGER.warn(projFileException);
                 }
             }
         });
@@ -79,22 +70,26 @@ public class ProjTimingTab extends TimerTab{
 
     @Override
     protected void timerStartButtonExtraLogic() {
+        projNameComboBox.setSelectedItem(currentProjectName);
         projNameComboBox.setEnabled(false);
-        timerStopButton.setEnabled(true);
-        timerStartButton.setEnabled(false);
+        timerStopButton.setEnabled(true);//move
+        timerStartButton.setEnabled(false);//move
     }
 
     @Override
     protected void timerStopButtonExtraLogic() {
         projNameComboBox.setEnabled(true);
-        timerStartButton.setEnabled(true);
+        timerStartButton.setEnabled(true);//move
         projectMap.compute(currentProjectName, (s, integer) -> integer += result);
         currentProjectName = null;
     }
 
     private void refreshNameComboBox() {
-        model.removeAllElements();
-        model.addAll(projectMap.keySet());
+        if (currentProjectName == null) {
+            projNameComboBox.removeAllItems();
+            Vector<String> rows = new Vector<>(projectMap.keySet());
+            projNameComboBox.setModel(new DefaultComboBoxModel<>(rows));
+        }
     }
 
     private void createProjTimingUIComponents(JComponent[] components) {
