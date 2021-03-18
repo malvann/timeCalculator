@@ -38,7 +38,6 @@ public class ProjectsTab {
       } catch (ProjFileException | IOException e){
           projList.setListData(new String[]{e.getMessage()});
       }
-      refreshProjList();
 
       projectsViewPane.addChangeListener(e -> refreshProjList());
 

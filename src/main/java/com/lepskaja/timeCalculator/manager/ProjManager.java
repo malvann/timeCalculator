@@ -46,7 +46,7 @@ public class ProjManager {
         @SneakyThrows
         @Override
         public void run() {
-            while (true){
+            while (!this.isInterrupted()){
                 saveProjMap();
                 TimeUnit.MINUTES.sleep(20);
             }
