@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.util.Vector;
 import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
 
@@ -20,16 +21,16 @@ public class ProjTimingTab extends TimerTab{
     private JTextField textFieldNewProjName;
 
     private ConcurrentMap<String, Integer> projectMap;
-    private String currentProjectName;
+    protected String currentProjectName;
     DefaultComboBoxModel<String> model;
 
     public ProjTimingTab(JComponent[] components) {
         super(components);
         createProjTimingUIComponents(components);
+        timerStartButton.setEnabled(false);
+        timerStopButton.setEnabled(false);
         model = new DefaultComboBoxModel<>();
         projNameComboBox.setModel(model);
-        timerStartButton.setEnabled(false);
-
         try {
             projectMap = ProjManager.getProjectMap();
             LOGGER.info("PROJ MAP:\n" +
@@ -40,9 +41,16 @@ public class ProjTimingTab extends TimerTab{
             resultField.setText(e.getMessage() + ERR_MSG_PROJ_FILE_LOST);
         }
 
-        projectsViewPane.addChangeListener(e -> refreshNameComboBox());
+
+    projectsViewPane.addChangeListener(
+        e -> {
+          refreshNameComboBox();
+          textFieldNewProjName.setText(null);
+//          System.out.println("in viewpane: "+currentProjectName);///////////////////////////////////////////////////
+        });
 
         projNameComboBox.addActionListener(e -> {
+            if (currentProjectName==null || currentProjectName.isEmpty()) return;
             currentProjectName = (String) projNameComboBox.getSelectedItem();
             resultField.setText("0 min");
             timerStartButton.setEnabled(true);
@@ -72,14 +80,16 @@ public class ProjTimingTab extends TimerTab{
     @Override
     protected void timerStartButtonExtraLogic() {
         projNameComboBox.setEnabled(false);
+        timerStopButton.setEnabled(true);
+        timerStartButton.setEnabled(false);
     }
 
     @Override
     protected void timerStopButtonExtraLogic() {
         projNameComboBox.setEnabled(true);
-        timerStartButton.setEnabled(false);
+        timerStartButton.setEnabled(true);
         projectMap.compute(currentProjectName, (s, integer) -> integer += result);
-        currentProjectName = "";
+        currentProjectName = null;
     }
 
     private void refreshNameComboBox() {

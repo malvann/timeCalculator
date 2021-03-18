@@ -33,7 +33,6 @@ public class ProjectsTab {
       projList.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
       projButtonEdit.setBackground(Color.pink);
       projSaveEditButton.setEnabled(false);
-
       try {
           projectMap = ProjManager.getProjectMap();
       } catch (ProjFileException | IOException e){

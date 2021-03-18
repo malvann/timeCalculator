@@ -74,3 +74,385 @@ q4 10
 q5 0
 
 EXIT
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+PROJ MAP:
+q1 202
+q2 51
+q3 1
+q4 10
+q5 0
+
+com.lepskaja.timeCalculator.tab.ProjTimingTab created
+com.lepskaja.timeCalculator.tab.ProjectsTab created
+TIME: 0 min
+PROJ MAP:
+p1 0
+
+PROJ MAP:
+p1 0
+p2 0
+
+TIME: 0 min
+BEFORE CLOSE PROJ MAP:
+p1 0
+p2 0
+
+EXIT
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+PROJ MAP:
+p1 0
+p2 0
+
+com.lepskaja.timeCalculator.tab.ProjTimingTab created
+com.lepskaja.timeCalculator.tab.ProjectsTab created
+BEFORE CLOSE PROJ MAP:
+p1 0
+p2 0
+
+EXIT
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+PROJ MAP:
+p1 0
+p2 0
+
+com.lepskaja.timeCalculator.tab.ProjTimingTab created
+com.lepskaja.timeCalculator.tab.ProjectsTab created
+PROJ MAP:
+p1 0
+p2 0
+3 0
+
+BEFORE CLOSE PROJ MAP:
+p1 0
+p2 0
+3 0
+
+EXIT
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+PROJ MAP:
+p1 0
+p2 0
+3 0
+
+com.lepskaja.timeCalculator.tab.ProjTimingTab created
+com.lepskaja.timeCalculator.tab.ProjectsTab created
+TIME: 0 min
+BEFORE CLOSE PROJ MAP:
+p1 0
+p2 0
+3 0
+
+EXIT
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+PROJ MAP:
+p1 0
+p2 0
+3 0
+
+com.lepskaja.timeCalculator.tab.ProjTimingTab created
+com.lepskaja.timeCalculator.tab.ProjectsTab created
+BEFORE CLOSE PROJ MAP:
+p1 0
+p2 0
+3 0
+
+EXIT
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+PROJ MAP:
+p1 0
+p2 0
+3 0
+
+com.lepskaja.timeCalculator.tab.ProjTimingTab created
+com.lepskaja.timeCalculator.tab.ProjectsTab created
+TIME: 1 min
+BEFORE CLOSE PROJ MAP:
+p1 1
+p2 0
+3 0
+
+EXIT
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+PROJ MAP:
+p1 1
+p2 0
+3 0
+
+com.lepskaja.timeCalculator.tab.ProjTimingTab created
+com.lepskaja.timeCalculator.tab.ProjectsTab created
+TIME: 1 min
+BEFORE CLOSE PROJ MAP:
+p1 2
+p2 0
+3 0
+
+EXIT
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+PROJ MAP:
+p1 2
+p2 0
+3 0
+
+com.lepskaja.timeCalculator.tab.ProjTimingTab created
+com.lepskaja.timeCalculator.tab.ProjectsTab created
+TIME: 1 min
+BEFORE CLOSE PROJ MAP:
+p1 2
+p2 0
+3 1
+
+EXIT
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+PROJ MAP:
+p1 2
+p2 0
+3 1
+
+com.lepskaja.timeCalculator.tab.ProjTimingTab created
+com.lepskaja.timeCalculator.tab.ProjectsTab created
+TIME: 0 min
+BEFORE CLOSE PROJ MAP:
+p1 2
+p2 0
+3 1
+
+EXIT
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+PROJ MAP:
+p1 2
+p2 0
+3 1
+
+com.lepskaja.timeCalculator.tab.ProjTimingTab created
+com.lepskaja.timeCalculator.tab.ProjectsTab created
+TIME: 0 min
+BEFORE CLOSE PROJ MAP:
+33 0
+p1 2
+p2 0
+3 1
+
+EXIT
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+PROJ MAP:
+33 0
+p1 2
+p2 0
+3 1
+
+com.lepskaja.timeCalculator.tab.ProjTimingTab created
+com.lepskaja.timeCalculator.tab.ProjectsTab created
+TIME: 1 min
+BEFORE CLOSE PROJ MAP:
+p1 2
+p2 0
+3 1
+
+EXIT
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+PROJ MAP:
+p1 2
+p2 0
+3 1
+
+com.lepskaja.timeCalculator.tab.ProjTimingTab created
+com.lepskaja.timeCalculator.tab.ProjectsTab created
+BEFORE CLOSE PROJ MAP:
+p1 2
+p2 0
+3 1
+
+EXIT
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+PROJ MAP:
+p1 2
+p2 0
+3 1
+
+com.lepskaja.timeCalculator.tab.ProjTimingTab created
+com.lepskaja.timeCalculator.tab.ProjectsTab created
+BEFORE CLOSE PROJ MAP:
+p1 2
+p2 0
+3 1
+
+EXIT
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+PROJ MAP:
+p1 2
+p2 0
+3 1
+
+com.lepskaja.timeCalculator.tab.ProjTimingTab created
+com.lepskaja.timeCalculator.tab.ProjectsTab created
+BEFORE CLOSE PROJ MAP:
+p1 2
+p2 0
+3 1
+
+EXIT
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+PROJ MAP:
+p1 2
+p2 0
+3 1
+
+com.lepskaja.timeCalculator.tab.ProjTimingTab created
+com.lepskaja.timeCalculator.tab.ProjectsTab created
+BEFORE CLOSE PROJ MAP:
+p1 2
+p2 0
+3 1
+
+EXIT
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+PROJ MAP:
+p1 2
+p2 0
+3 1
+
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+PROJ MAP:
+p1 2
+p2 0
+3 1
+
+com.lepskaja.timeCalculator.tab.ProjTimingTab created
+com.lepskaja.timeCalculator.tab.ProjectsTab created
+BEFORE CLOSE PROJ MAP:
+p1 2
+p2 0
+3 1
+
+EXIT
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+PROJ MAP:
+p1 2
+p2 0
+3 1
+
+com.lepskaja.timeCalculator.tab.ProjTimingTab created
+com.lepskaja.timeCalculator.tab.ProjectsTab created
+BEFORE CLOSE PROJ MAP:
+p1 2
+p2 0
+3 1
+
+EXIT
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+PROJ MAP:
+p1 2
+p2 0
+3 1
+
+com.lepskaja.timeCalculator.tab.ProjTimingTab created
+com.lepskaja.timeCalculator.tab.ProjectsTab created
+BEFORE CLOSE PROJ MAP:
+p1 2
+p2 0
+3 1
+
+EXIT
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+PROJ MAP:
+p1 2
+p2 0
+3 1
+
+com.lepskaja.timeCalculator.tab.ProjTimingTab created
+com.lepskaja.timeCalculator.tab.ProjectsTab created
+BEFORE CLOSE PROJ MAP:
+p1 2
+p2 0
+3 1
+
+EXIT
+START
+com.lepskaja.timeCalculator.tab.CalcTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+com.lepskaja.timeCalculator.tab.TimerTab created
+PROJ MAP:
+p1 2
+p2 0
+3 1
+
+com.lepskaja.timeCalculator.tab.ProjTimingTab created
+com.lepskaja.timeCalculator.tab.ProjectsTab created
+BEFORE CLOSE PROJ MAP:
+p1 2
+p2 0
+3 1
+
+EXIT

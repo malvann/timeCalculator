@@ -46,7 +46,7 @@ public class TimerTab extends AbstractTab{
     }
 
     //add logic to timerStartButton in ProjTimingTab.java
-    protected void timerStartButtonExtraLogic() {}
+    protected void timerStartButtonExtraLogic(){}
 
     //add logic to timerStopButton in ProjTimingTab.java
     protected void timerStopButtonExtraLogic(){}
