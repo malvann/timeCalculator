@@ -32,12 +32,15 @@ public class TimerTab extends AbstractTab{
             showTimeThread.start();
             timer.start();
             timerStartButton.setBackground(Color.pink);
+            timerStopButton.setEnabled(true);
+            timerStartButton.setEnabled(false);
         });
 
         timerStopButton.addActionListener(e -> {
             showTimeThread.interrupt();
             result = timer.getTimePeriod(type);
             timerStartButton.setBackground(timerStopButton.getBackground());
+            timerStartButton.setEnabled(true);
             refreshResultField(result);
             timerStopButtonExtraLogic();
             LOGGER.info("TIME: " + result + " min");
@@ -58,7 +61,7 @@ public class TimerTab extends AbstractTab{
             int h = 0;
             int min = 0;
             int sec = 0;
-            while (true){
+            while (!this.isInterrupted()){
                 TimeUnit.SECONDS.sleep(1);
                 sec++;
                 if (sec==60){

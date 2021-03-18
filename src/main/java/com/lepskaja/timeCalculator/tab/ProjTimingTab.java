@@ -6,8 +6,6 @@ import org.apache.log4j.Logger;
 
 import javax.swing.*;
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.Vector;
 import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
 
@@ -73,15 +71,12 @@ public class ProjTimingTab extends TimerTab{
     protected void timerStartButtonExtraLogic() {
         projNameComboBox.setSelectedItem(currentProjectName);
         projNameComboBox.setEnabled(false);
-        timerStopButton.setEnabled(true);//move
-        timerStartButton.setEnabled(false);//move
         refreshNameComboBox();
     }
 
     @Override
     protected void timerStopButtonExtraLogic() {
         projNameComboBox.setEnabled(true);
-        timerStartButton.setEnabled(true);//move
         projectMap.compute(currentProjectName, (s, integer) -> integer += result);
         currentProjectName = null;
     }
