@@ -1,18 +1,15 @@
 package com.lepskaja.timeCalculator.tab;
 
-import com.lepskaja.timeCalculator.exception.ProjFileException;
 import com.lepskaja.timeCalculator.manager.ProjManager;
 import org.apache.log4j.Logger;
 
 import javax.swing.*;
-import java.io.IOException;
 import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
 
 public class ProjTimingTab extends TimerTab{
     private static final Logger LOGGER = Logger.getLogger(ProjTimingTab.class);
     private static final String ERR_MSG_PROJ_IS_PRESENT = "Such project name is presented.";
-    private static final String ERR_MSG_PROJ_FILE_LOST = " Projects file had lust.";
 
     private JTabbedPane projectsViewPane;
     private JComboBox<String> projNameComboBox;
@@ -25,15 +22,9 @@ public class ProjTimingTab extends TimerTab{
     public ProjTimingTab(JComponent[] components) {
         super(components);
         createProjTimingUIComponents(components);
-        try {
-            projectMap = ProjManager.getProjectMap();
-            LOGGER.info("PROJ MAP:\n" +
-                    ProjManager.getProjectMap().entrySet().stream()
-                            .map(entry -> entry.getKey() + " " + entry.getValue()+"\n")
-                            .collect(Collectors.joining()));
-        } catch (ProjFileException | IOException e){
-            resultField.setText(e.getMessage() + ERR_MSG_PROJ_FILE_LOST);
-        }
+        LOGGER.info("PROJ MAP:\n" + ProjManager.getProjectMap().entrySet().stream()
+                .map(entry -> entry.getKey() + " " + entry.getValue()+"\n")
+                .collect(Collectors.joining()));
 
     projectsViewPane.addChangeListener(e -> {
           refreshNameComboBox();
@@ -54,14 +45,9 @@ public class ProjTimingTab extends TimerTab{
                 projectMap.put(newProjName,0);
                 refreshNameComboBox();
                 textFieldNewProjName.setText(null);
-                try {
-                    LOGGER.info("PROJ MAP:\n" +
-                            ProjManager.getProjectMap().entrySet().stream()
-                                    .map(entry -> entry.getKey() + " " + entry.getValue()+"\n")
-                                    .collect(Collectors.joining()));
-                } catch (ProjFileException | IOException projFileException) {
-                    LOGGER.warn(projFileException);
-                }
+                LOGGER.info("PROJ MAP:\n" + ProjManager.getProjectMap().entrySet().stream()
+                        .map(entry -> entry.getKey() + " " + entry.getValue()+"\n")
+                        .collect(Collectors.joining()));
             }
         });
         LOGGER.info(ProjTimingTab.class.getName() + " created");
@@ -82,11 +68,10 @@ public class ProjTimingTab extends TimerTab{
     }
 
     private void refreshNameComboBox() {
-        if (currentProjectName == null) {
-            projNameComboBox.removeAllItems();
-            String[] rows = projectMap.keySet().toArray(new String[0]);
-            projNameComboBox.setModel(new DefaultComboBoxModel<>(rows));
-        }
+        if (currentProjectName != null) return;
+        projNameComboBox.removeAllItems();
+        String[] rows = projectMap.keySet().toArray(new String[0]);
+        projNameComboBox.setModel(new DefaultComboBoxModel<>(rows));
     }
 
     private void createProjTimingUIComponents(JComponent[] components) {

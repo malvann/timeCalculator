@@ -34,7 +34,7 @@ public class ProjectsTab {
       projButtonEdit.setBackground(Color.pink);
       projSaveEditButton.setEnabled(false);
       try {
-          projectMap = ProjManager.getProjectMap();
+          projectMap = ProjManager.downloadProjectMap();
       } catch (ProjFileException | IOException e){
           projList.setListData(new String[]{e.getMessage()});
       }
@@ -84,7 +84,7 @@ public class ProjectsTab {
   private void refreshProjList() {
       Vector<String> rows = projectMap.entrySet().stream().map(ProjectDataConverter::convertToString)
               .collect(Collectors.toCollection(Vector::new));
-    projList.setListData(rows);
+      projList.setListData(rows);
   }
 
   private void createProjUIComponents(JComponent[] components) {

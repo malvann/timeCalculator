@@ -1,7 +1,6 @@
 package com.lepskaja.timeCalculator.form;
 
 import com.lepskaja.timeCalculator.exception.ProjFileException;
-import com.lepskaja.timeCalculator.manager.FileManager;
 import com.lepskaja.timeCalculator.manager.ProjManager;
 import com.lepskaja.timeCalculator.tab.CalcTab;
 import com.lepskaja.timeCalculator.tab.ProjTimingTab;
@@ -67,15 +66,10 @@ public class TimeCalculator {
         new WindowAdapter() {
           @Override
           public void windowClosing(WindowEvent e) {
-            try {
-              FileManager.wright(ProjManager.getProjectMap());
               LOGGER.info("BEFORE CLOSE PROJ MAP:\n" +
                       ProjManager.getProjectMap().entrySet().stream()
                       .map(entry -> entry.getKey() + " " + entry.getValue()+"\n").collect(Collectors.joining()));
-            } catch (ProjFileException | IOException ex) {
-              ex.printStackTrace();
-            }
-            LOGGER.info("EXIT");
+              LOGGER.info("EXIT");
             System.exit(0);
           }
         });

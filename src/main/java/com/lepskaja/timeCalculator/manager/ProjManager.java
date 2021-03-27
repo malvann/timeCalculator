@@ -15,7 +15,11 @@ import java.util.concurrent.TimeUnit;
 public class ProjManager {
     private static final ConcurrentMap<String, Integer> PROJECT_MAP = new ConcurrentHashMap<>();
 
-    public static ConcurrentMap<String, Integer> getProjectMap() throws ProjFileException, IOException {
+    public static ConcurrentMap<String, Integer> getProjectMap() {
+        return PROJECT_MAP;
+    }
+
+    public static ConcurrentMap<String, Integer> downloadProjectMap() throws ProjFileException, IOException {
         if (PROJECT_MAP.isEmpty()){
             List<String> rows = FileManager.read();
             fillProjectMap(rows);
